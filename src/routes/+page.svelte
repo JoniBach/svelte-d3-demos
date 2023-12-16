@@ -240,8 +240,8 @@
   ];
 
   const config = {
-    margin: { top: 100, right: 30, bottom: 20, left: 70 },
-    size: { width: 460, height: 400 },
+    margin: { top: 50, right: 30, bottom: 20, left: 70 },
+    size: { width: 400, height: 400 },
     bg: "transparent",
     padding: 0,
   };
