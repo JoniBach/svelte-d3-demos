@@ -8,14 +8,14 @@
 
 	onMount(() => createDemo(variant, data, config));
 </script>
-<div id='{variant}-title' class="title">
+
+<div id="{variant}-title" class="title">
 	{variant}
 </div>
 <div
 	class="container"
 	style={`background: ${config?.bg || 'transparent'}; padding: ${config?.padding || '0'};`}
 >
-	
 	<div class="graph" id={variant} />
 </div>
 
@@ -34,7 +34,7 @@
 		position: sticky;
 		top: 48px;
 		background-color: #eee;
-		padding: 5px
+		padding: 5px;
 	}
 
 	.graph {
