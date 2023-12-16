@@ -16,9 +16,9 @@ export const demoDensity = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// get the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// add the x Axis
-		const x = d3.scaleLinear().domain([0, 1000]).range([0, width]);
+		const x = d3.scaleLinear().domain([-50, 1100]).range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 		// add the y Axis

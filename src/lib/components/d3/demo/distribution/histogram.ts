@@ -16,7 +16,8 @@ export const demoHistogram = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// get the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
+
 		// X axis: scale and draw:
 		const x = d3
 			.scaleLinear()

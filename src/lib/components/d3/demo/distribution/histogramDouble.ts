@@ -1,6 +1,7 @@
 import * as d3 from 'd3';
 
 export const demoHistogramDouble = (newData: string, config: object): void => {
+	console.log()
 	// set the dimensions and margins of the graph
 	const margin = config.margin,
 		width = config.size.width - margin.left - margin.right,
@@ -16,11 +17,11 @@ export const demoHistogramDouble = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// get the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// X axis: scale and draw:
 		const x = d3
 			.scaleLinear()
-			.domain([-4, 9]) // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
+			.domain([-5, 5]) // can use this instead of 1000 to have the max of data: d3.max(data, function(d) { return +d.price })
 			.range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
@@ -28,7 +29,7 @@ export const demoHistogramDouble = (newData: string, config: object): void => {
 		const histogram = d3
 			.histogram()
 			.value(function (d) {
-				return +d.value;
+				return +d.score;
 			}) // I need to give the vector of value
 			.domain(x.domain()) // then the domain of the graphic
 			.thresholds(x.ticks(40)); // then the numbers of bins
@@ -36,12 +37,12 @@ export const demoHistogramDouble = (newData: string, config: object): void => {
 		// And apply twice this function to data to get the bins.
 		const bins1 = histogram(
 			data.filter(function (d) {
-				return d.type === 'variable 1';
+				return d.person === 'A';
 			})
 		);
 		const bins2 = histogram(
 			data.filter(function (d) {
-				return d.type === 'variable 2';
+				return d.person === 'B';
 			})
 		);
 
