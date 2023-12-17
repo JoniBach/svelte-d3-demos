@@ -16,9 +16,9 @@ export const demoBarStacked = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// Parse the Data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// List of subgroups = header of the csv files = soil condition here
-		const subgroups = data.columns.slice(1);
+		const subgroups = Object.keys(data[0]).slice(1);
 
 		// List of groups = species here = value of the first column called group -> I show them on the X axis
 		const groups = data.map((d) => d.group);
@@ -31,7 +31,7 @@ export const demoBarStacked = (newData: string, config: object): void => {
 			.call(d3.axisBottom(x).tickSizeOuter(0));
 
 		// Add Y axis
-		const y = d3.scaleLinear().domain([0, 60]).range([height, 0]);
+		const y = d3.scaleLinear().domain([0, 300]).range([height, 0]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// color palette = one color per subgroup

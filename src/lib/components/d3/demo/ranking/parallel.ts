@@ -16,10 +16,10 @@ export const demoParallel = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// Parse the Data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Extract the list of dimensions we want to keep in the plot. Here I keep all except the column called Species
 		let dimensions = Object.keys(data[0]).filter(function (d) {
-			return d != 'Species';
+			return d != 'Model';
 		});
 
 		// For each dimension, I build a linear scale. I store all in a y object
@@ -69,7 +69,7 @@ export const demoParallel = (newData: string, config: object): void => {
 			.attr('transform', function (d) {
 				return 'translate(' + x(d) + ')';
 			})
-			// And I build the axis with the call function
+			// And I build the axis with the call functions
 			.each(function (d) {
 				d3.select(this).call(d3.axisLeft().scale(y[d]));
 			})

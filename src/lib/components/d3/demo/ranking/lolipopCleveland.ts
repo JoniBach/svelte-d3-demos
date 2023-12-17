@@ -16,9 +16,9 @@ export const demoLolipopCleveland = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
 	// Parse the Data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Add X axis
-		const x = d3.scaleLinear().domain([-1, 6]).range([0, width]);
+		const x = d3.scaleLinear().domain([-1, 10]).range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 		// Y axis
@@ -27,7 +27,7 @@ export const demoLolipopCleveland = (newData: string, config: object): void => {
 			.range([0, height])
 			.domain(
 				data.map(function (d) {
-					return d.group;
+					return d.Athlete;
 				})
 			)
 			.padding(1);
@@ -39,16 +39,16 @@ export const demoLolipopCleveland = (newData: string, config: object): void => {
 			.data(data)
 			.join('line')
 			.attr('x1', function (d) {
-				return x(d.value1);
+				return x(d.LongJump);
 			})
 			.attr('x2', function (d) {
-				return x(d.value2);
+				return x(d.HighJump);
 			})
 			.attr('y1', function (d) {
-				return y(d.group);
+				return y(d.Athlete);
 			})
 			.attr('y2', function (d) {
-				return y(d.group);
+				return y(d.Athlete);
 			})
 			.attr('stroke', 'grey')
 			.attr('stroke-width', '1px');
@@ -59,10 +59,10 @@ export const demoLolipopCleveland = (newData: string, config: object): void => {
 			.data(data)
 			.join('circle')
 			.attr('cx', function (d) {
-				return x(d.value1);
+				return x(d.LongJump);
 			})
 			.attr('cy', function (d) {
-				return y(d.group);
+				return y(d.Athlete);
 			})
 			.attr('r', '6')
 			.style('fill', '#69b3a2');
@@ -73,10 +73,10 @@ export const demoLolipopCleveland = (newData: string, config: object): void => {
 			.data(data)
 			.join('circle')
 			.attr('cx', function (d) {
-				return x(d.value2);
+				return x(d.HighJump);
 			})
 			.attr('cy', function (d) {
-				return y(d.group);
+				return y(d.Athlete);
 			})
 			.attr('r', '6')
 			.style('fill', '#4C4082');

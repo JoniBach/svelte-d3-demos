@@ -16,14 +16,14 @@ export const demoBar = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// Parse the Data
-	d3.csv(
-		'https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv'
+	d3.json(
+		newData
 	).then(function (data) {
 		// X axis
 		const x = d3
 			.scaleBand()
 			.range([0, width])
-			.domain(data.map((d) => d.Country))
+			.domain(data.map((d) => d.name))
 			.padding(0.2);
 		svg
 			.append('g')
@@ -34,7 +34,7 @@ export const demoBar = (newData: string, config: object): void => {
 			.style('text-anchor', 'end');
 
 		// Add Y axis
-		const y = d3.scaleLinear().domain([0, 13000]).range([height, 0]);
+		const y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// Bars
@@ -42,10 +42,10 @@ export const demoBar = (newData: string, config: object): void => {
 			.selectAll('mybar')
 			.data(data)
 			.join('rect')
-			.attr('x', (d) => x(d.Country))
-			.attr('y', (d) => y(d.Value))
+			.attr('x', (d) => x(d.name))
+			.attr('y', (d) => y(d.level))
 			.attr('width', x.bandwidth())
-			.attr('height', (d) => height - y(d.Value))
+			.attr('height', (d) => height - y(d.level))
 			.attr('fill', '#69b3a2');
 	});
 };

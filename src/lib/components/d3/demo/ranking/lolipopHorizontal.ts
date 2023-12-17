@@ -16,9 +16,9 @@ export const demoLolipopHorizontal = (newData: string, config: object): void => 
 		.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
 	// Parse the Data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Add X axis
-		const x = d3.scaleLinear().domain([0, 13000]).range([0, width]);
+		const x = d3.scaleLinear().domain([0, 40]).range([0, width]);
 		svg
 			.append('g')
 			.attr('transform', `translate(0, ${height})`)
@@ -33,7 +33,7 @@ export const demoLolipopHorizontal = (newData: string, config: object): void => 
 			.range([0, height])
 			.domain(
 				data.map(function (d) {
-					return d.Country;
+					return d.name;
 				})
 			)
 			.padding(1);
@@ -46,14 +46,14 @@ export const demoLolipopHorizontal = (newData: string, config: object): void => 
 			.enter()
 			.append('line')
 			.attr('x1', function (d) {
-				return x(d.Value);
+				return x(d.level);
 			})
 			.attr('x2', x(0))
 			.attr('y1', function (d) {
-				return y(d.Country);
+				return y(d.name);
 			})
 			.attr('y2', function (d) {
-				return y(d.Country);
+				return y(d.name);
 			})
 			.attr('stroke', 'grey');
 
@@ -64,10 +64,10 @@ export const demoLolipopHorizontal = (newData: string, config: object): void => 
 			.enter()
 			.append('circle')
 			.attr('cx', function (d) {
-				return x(d.Value);
+				return x(d.level);
 			})
 			.attr('cy', function (d) {
-				return y(d.Country);
+				return y(d.name);
 			})
 			.attr('r', '4')
 			.style('fill', '#69b3a2')

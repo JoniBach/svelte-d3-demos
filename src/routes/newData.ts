@@ -117,38 +117,42 @@ export const data = [
         graphs: [
             {
                 key: "bar",
+                title: 'Pokemon evolution level',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv",
+                    "data/ranking/bar.json",
             },
             {
                 key: "bar-horizontal",
+                title: 'Pokemon evolution level',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv",
+                    "data/ranking/bar.json",
             },
             {
                 key: "bar-stacked",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_stacked.csv",
+                    "data/ranking/bar-stacked.json",
+
             },
             {
                 key: "parallel",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/iris.csv",
+                    "data/ranking/parallel.json",
             },
             {
                 key: "lolipop",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv",
+                    "data/ranking/bar.json",
             },
             {
                 key: "lolipop-horizontal",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum_header.csv",
+                    "data/ranking/bar.json",
             },
             {
                 key: "lolipop-cleveland",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_cleveland.csv",
+                    "data/ranking/lolipop-cleveland.json",
+                // "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_cleveland.csv",
             },
             {
                 key: "bar-circular",

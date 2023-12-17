@@ -16,14 +16,14 @@ export const demoLolipop = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// Parse the Data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// X axis
 		const x = d3
 			.scaleBand()
 			.range([0, width])
 			.domain(
 				data.map(function (d) {
-					return d.Country;
+					return d.name;
 				})
 			)
 			.padding(1);
@@ -36,7 +36,7 @@ export const demoLolipop = (newData: string, config: object): void => {
 			.style('text-anchor', 'end');
 
 		// Add Y axis
-		const y = d3.scaleLinear().domain([0, 13000]).range([height, 0]);
+		const y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// Lines
@@ -46,13 +46,13 @@ export const demoLolipop = (newData: string, config: object): void => {
 			.enter()
 			.append('line')
 			.attr('x1', function (d) {
-				return x(d.Country);
+				return x(d.name);
 			})
 			.attr('x2', function (d) {
-				return x(d.Country);
+				return x(d.name);
 			})
 			.attr('y1', function (d) {
-				return y(d.Value);
+				return y(d.level);
 			})
 			.attr('y2', y(0))
 			.attr('stroke', 'grey');
@@ -63,10 +63,10 @@ export const demoLolipop = (newData: string, config: object): void => {
 			.data(data)
 			.join('circle')
 			.attr('cx', function (d) {
-				return x(d.Country);
+				return x(d.name);
 			})
 			.attr('cy', function (d) {
-				return y(d.Value);
+				return y(d.level);
 			})
 			.attr('r', '4')
 			.style('fill', '#69b3a2')
