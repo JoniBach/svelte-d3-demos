@@ -129,22 +129,26 @@ export const data = [
             },
             {
                 key: "bar-stacked",
+                title: 'Sales of goods',
                 value:
                     "data/ranking/bar-stacked.json",
 
             },
             {
                 key: "parallel",
+                title: 'Vehicles performance',
                 value:
                     "data/ranking/parallel.json",
             },
             {
                 key: "lolipop",
+                title: 'Pokemon evolution levels',
                 value:
                     "data/ranking/bar.json",
             },
             {
                 key: "lolipop-horizontal",
+                title: 'Pokemon evolution levels',
                 value:
                     "data/ranking/bar.json",
             },
@@ -196,15 +200,18 @@ export const data = [
             },
             {
                 key: "dendrogram",
+                title: 'Employee structure',
                 value:
                     "data/comparison/dendrogram.json",
             },
             {
                 key: "doughnut",
+                title: 'Example doughnut chart',
                 value: { a: 9, b: 20, c: 30, d: 8, e: 12, f: 3, g: 7, h: 14 },
             },
             {
                 key: "pie",
+                title: 'Example pie chart',
                 value: { a: 9, b: 20, c: 30, d: 8, e: 12, f: 3, g: 7, h: 14 },
             },
         ],
