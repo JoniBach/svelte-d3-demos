@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
 	import { createDemo } from './createDemo';
+	import CodeViewer from '../codeViewer/CodeViewer.svelte';
 
 	export let variant: any = null;
 	export let fn: any = null;
@@ -8,12 +9,16 @@
 	export let data: any = null;
 	export let config: object = {};
 
+	let fnContent: string = '';
+
 	const baseURL = 'https://github.com/JoniBach/svelte-d3-demos/tree/main/static/';
 
 	onMount(() => {
 		// createDemo(variant, data, config);
 		fn(data, config);
+		fnContent = fn.toString();
 	});
+
 </script>
 
 <div id="{variant}-title" class="title">
@@ -33,7 +38,10 @@
 	{/if}
 
 	<div class="graph" id={variant} />
-	<div class="example-code"></div>
+	<div class="example-code">
+
+<CodeViewer code={fnContent} />
+	</div>
 	<div class="content"></div>
 </div>
 
