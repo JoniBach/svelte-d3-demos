@@ -16,31 +16,32 @@ export const demoScatterConnectedSmoothe = (newData: string, config: object): vo
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	//Read the data
-	d3.csv(
+	d3.json(
 		newData,
 
 		// When reading the csv, I must format variables:
-		(d) => {
-			return { date: d3.timeParse('%Y-%m-%d')(d.date), value: d.value };
-		}
+		// (d) => {
+		// 	return { date: d3.timeParse('%Y-%m-%d')(d.date), value: d.value };
+		// }
 	).then(
 		// Now I can use this dataset:
 		function (data) {
+			const newData = data.map((d) => ({ date: d3.timeParse('%Y-%m-%d')(d.date), value: d.average_temperature }))
 			// Add X axis --> it is a date format
 			const x = d3
 				.scaleTime()
-				.domain(d3.extent(data, (d) => d.date))
+				.domain(d3.extent(newData, (d) => d.date))
 				.range([0, width]);
 			svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 			// Add Y axis
-			const y = d3.scaleLinear().domain([8000, 9200]).range([height, 0]);
+			const y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
 			svg.append('g').call(d3.axisLeft(y));
 
 			// Add the line
 			svg
 				.append('path')
-				.datum(data)
+				.datum(newData)
 				.attr('fill', 'none')
 				.attr('stroke', 'black')
 				.attr('stroke-width', 1.5)
@@ -82,7 +83,7 @@ export const demoScatterConnectedSmoothe = (newData: string, config: object): vo
 			svg
 				.append('g')
 				.selectAll('dot')
-				.data(data)
+				.data(newData)
 				.join('circle')
 				.attr('class', 'myCircle')
 				.attr('cx', (d) => x(d.date))

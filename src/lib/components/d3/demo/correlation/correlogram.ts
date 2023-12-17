@@ -15,7 +15,7 @@ export const demoCorrelogram = (newData: string, config: object): void => {
 		.append('g')
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
-	d3.csv(newData).then(function (rows) {
+	d3.json(newData).then(function (rows) {
 		// if (error) throw error
 		// Going from wide to long format
 		const data = [];

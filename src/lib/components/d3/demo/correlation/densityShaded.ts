@@ -15,25 +15,25 @@ export const demoDensityShaded = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// read data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Add X axis
 		const x = d3
 			.scaleLinear()
-			.domain([5, 20])
+			.domain([5, 30])
 			.range([margin.left, width - margin.right]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 		// Add Y axis
 		const y = d3
 			.scaleLinear()
-			.domain([5, 25])
+			.domain([4, 31])
 			.range([height - margin.bottom, margin.top]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// Prepare a color palette
 		const color = d3
 			.scaleLinear()
-			.domain([0, 1]) // Points per square pixel.
+			.domain([0, 0.01]) // Points per square pixel.
 			.range(['white', '#69b3a2']);
 
 		// compute the density data

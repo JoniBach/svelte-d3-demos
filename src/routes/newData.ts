@@ -5,36 +5,43 @@ export const data = [
         graphs: [
             {
                 key: "histogram",
+                title: 'Sales Performance',
                 value:
                     "data/distribution/histogram.json",
             },
             {
                 key: "histogram-double",
+                title: 'Sales Performance',
                 value:
                     "data/distribution/histogram-double.json",
             },
 
             {
                 key: "density",
+                title: 'Sales Performance',
                 value:
                     "data/distribution/histogram.json",
             },
             {
                 key: "density-double",
+                title: 'Density double',
                 value: "data/distribution/density-double.json",
             },
             {
                 key: "density-double-b2b",
+                title: 'Density double back to back',
                 value:
                     "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_doubleHist.csv",
             },
             {
                 key: "ridgeline",
+                title: 'Mental Health',
                 value:
                     "data/distribution/ridgeline.json",
             },
             {
                 key: "ridgeline-advanced",
+                title: 'Mental Health',
                 value:
                     "data/distribution/ridgeline.json",
             },
@@ -45,53 +52,63 @@ export const data = [
         graphs: [
             {
                 key: "scatter",
+                title: 'Stock Performance',
                 value:
                     "data/correlation/scatter.json",
             },
             {
                 key: "heatmap",
+                title: 'Employeee Performance',
                 value:
                     "data/correlation/heatmap.json",
             },
             {
                 key: "heatmap-advanced",
+                title: 'Employeee Performance',
                 value:
                     "data/correlation/heatmap.json",
             },
             {
                 key: "correlogram",
+                title: 'Health and Lifestyle',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_correlogram.csv",
+                    "data/correlation/correlogram.json",
             },
             {
                 key: "bubble",
+                title: 'Near Earth Objects',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/4_ThreeNum.csv",
+                    "data/correlation/bubble.json",
             },
             {
                 key: "bubble-advanced",
+                title: 'Near Earth Objects',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/4_ThreeNum.csv",
+                    "data/correlation/bubble.json",
             },
             {
                 key: "scatter-connected",
+                title: 'Scatter connected',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/connectedscatter.csv",
+                    "data/correlation/scatter-connected.json",
             },
             {
                 key: "scatter-connected-multi",
+                title: 'Time Sales Expenses Proffit',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_connectedscatter.csv",
+                    "data/correlation/scatter-connected-multi.json",
+
             },
             {
                 key: "scatter-connected-smoothe",
+                title: 'Scatter connected smothe',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/connectedscatter.csv",
+                    "data/correlation/scatter-connected.json",
             },
             {
                 key: "density-shaded",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_for_density2d.csv",
+                    "data/correlation/density-shaded.json",
             },
         ],
     },

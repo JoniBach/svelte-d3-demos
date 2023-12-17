@@ -16,17 +16,18 @@ export const demoBubble = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	//Read the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
+
 		// Add X axis
-		const x = d3.scaleLinear().domain([0, 10000]).range([0, width]);
+		const x = d3.scaleLinear().domain([0, 500]).range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 		// Add Y axis
-		const y = d3.scaleLinear().domain([35, 90]).range([height, 0]);
+		const y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// Add a scale for bubble size
-		const z = d3.scaleLinear().domain([200000, 1310000000]).range([1, 40]);
+		const z = d3.scaleLinear().domain([0, 30]).range([1, 40]);
 
 		// Add dots
 		svg
@@ -34,9 +35,9 @@ export const demoBubble = (newData: string, config: object): void => {
 			.selectAll('dot')
 			.data(data)
 			.join('circle')
-			.attr('cx', (d) => x(d.gdpPercap))
-			.attr('cy', (d) => y(d.lifeExp))
-			.attr('r', (d) => z(d.pop))
+			.attr('cx', (d) => x(d.Distance_from_Earth))
+			.attr('cy', (d) => y(d.Velocity))
+			.attr('r', (d) => z(d.Diameter))
 			.style('fill', '#69b3a2')
 			.style('opacity', '0.7')
 			.attr('stroke', 'black');

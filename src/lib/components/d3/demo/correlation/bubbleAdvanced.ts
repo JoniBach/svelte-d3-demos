@@ -16,17 +16,17 @@ export const demoBubbleAdvanced = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	//Read the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Add X axis
-		const x = d3.scaleLinear().domain([0, 12000]).range([0, width]);
+		const x = d3.scaleLinear().domain([0, 500]).range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 		// Add Y axis
-		const y = d3.scaleLinear().domain([35, 90]).range([height, 0]);
+		const y = d3.scaleLinear().domain([0, 40]).range([height, 0]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// Add a scale for bubble size
-		const z = d3.scaleLinear().domain([200000, 1310000000]).range([4, 40]);
+		const z = d3.scaleLinear().domain([0, 40]).range([4, 40]);
 
 		// Add a scale for bubble color
 		const myColor = d3
@@ -50,7 +50,7 @@ export const demoBubbleAdvanced = (newData: string, config: object): void => {
 			tooltip.transition().duration(200);
 			tooltip
 				.style('opacity', 1)
-				.html('Country: ' + d.country)
+				.html('Name: ' + d.Name)
 				.style('left', event.x / 2 + 'px')
 				.style('top', event.y / 2 + 30 + 'px');
 		};
@@ -68,10 +68,10 @@ export const demoBubbleAdvanced = (newData: string, config: object): void => {
 			.data(data)
 			.join('circle')
 			.attr('class', 'bubbles')
-			.attr('cx', (d) => x(d.gdpPercap))
-			.attr('cy', (d) => y(d.lifeExp))
-			.attr('r', (d) => z(d.pop))
-			.style('fill', (d) => myColor(d.continent))
+			.attr('cx', (d) => x(d.Distance_from_Earth))
+			.attr('cy', (d) => y(d.Velocity))
+			.attr('r', (d) => z(d.Diameter))
+			.style('fill', (d) => myColor(d.Name))
 			// -3- Trigger the functions
 			.on('mouseover', showTooltip)
 			.on('mousemove', moveTooltip)

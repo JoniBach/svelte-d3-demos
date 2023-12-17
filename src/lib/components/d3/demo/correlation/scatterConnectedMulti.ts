@@ -16,9 +16,9 @@ export const demoScatterConnectedMulti = (newData: string, config: object): void
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	//Read the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// List of groups (here I have one group per column)
-		const allGroup = ['valueA', 'valueB', 'valueC'];
+		const allGroup = ['time', 'Sales', 'Expenses', 'Profit'];
 
 		// Reformat the data: we need an array of arrays of {x, y} tuples
 		const dataReady = allGroup.map(function (grpName) {
