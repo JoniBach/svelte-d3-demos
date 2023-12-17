@@ -38,7 +38,7 @@
 
 	<div class="graph" id={variant} />
 	<div class="example-code">
-		<CodeViewer code={fnContent} />
+		<CodeViewer code={fnContent} {data} />
 	</div>
 	<div class="content"></div>
 </div>
