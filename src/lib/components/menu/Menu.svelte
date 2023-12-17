@@ -1,5 +1,9 @@
 <script>
+	import { onMount } from 'svelte';
+
 	export let data;
+
+	let isSmallScreen = false;
 
 	function navigateToElement(elementId) {
 		const element = document.getElementById(elementId + '-title');
@@ -8,9 +12,19 @@
 			element.scrollIntoView({ behavior: 'smooth' });
 		}
 	}
+
+	// Check screen width on component mount and on window resize
+	function checkScreenSize() {
+		isSmallScreen = window.innerWidth <= 600;
+	}
+
+	onMount(() => {
+		window.addEventListener('resize', checkScreenSize);
+		checkScreenSize();
+	});
 </script>
 
-<div class="sidebar">
+<div class="sidebar {isSmallScreen ? 'hidden' : ''}">
 	<div class="sidebar-content">
 		{#each data as category}
 			<div class="category" on:click={() => navigateToElement(category.category)}>
@@ -53,7 +67,18 @@
 		margin-left: 20px;
 		margin-bottom: 5px;
 	}
+
 	.sidebar-content::-webkit-scrollbar {
 		display: none;
+	}
+
+	.hidden {
+		display: none;
+	}
+
+	@media (max-width: 600px) {
+		.sidebar {
+			display: none;
+		}
 	}
 </style>

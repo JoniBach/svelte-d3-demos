@@ -34,9 +34,7 @@ import { demoArc } from './demo/flow/arc';
 import { demoChord } from './demo/flow/chord';
 import { demoNetwork } from './demo/flow/network';
 
-export const createDemo = (variant: string, data: string, config: object) => {
-
-
+export const createDemo = (variant: string, data: string, config: object,) => {
 	switch (variant) {
 		// distribution
 		case 'histogram':
@@ -125,7 +123,6 @@ export const createDemo = (variant: string, data: string, config: object) => {
 		// comparison
 		case 'treemap':
 			demoTreemapJson(data, config);
-			break;
 			break;
 		case 'treemap-circular':
 			demoTreemapCircular(data, config);
