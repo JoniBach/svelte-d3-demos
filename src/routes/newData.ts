@@ -31,12 +31,12 @@ export const data = [
             {
                 key: "ridgeline",
                 value:
-                    "https://raw.githubusercontent.com/zonination/perceptions/master/probly.csv",
+                    "data/distribution/ridgeline.json",
             },
             {
                 key: "ridgeline-advanced",
                 value:
-                    "https://raw.githubusercontent.com/zonination/perceptions/master/probly.csv",
+                    "data/distribution/ridgeline.json",
             },
         ],
     },

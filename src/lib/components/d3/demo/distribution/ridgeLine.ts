@@ -16,9 +16,9 @@ export const demoRidgeLine = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
 	//read data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Get the different categories and count them
-		const categories = data.columns;
+		const categories = Object.keys(data[0]);
 		const n = categories.length;
 
 		// Add X axis

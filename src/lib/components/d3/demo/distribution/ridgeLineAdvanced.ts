@@ -16,18 +16,9 @@ export const demoRidgeLineAdvanced = (newData: string, config: object): void => 
 		.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
 	//read data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Get the different categories and count them
-		const categories = [
-			'Almost Certainly',
-			'Very Good Chance',
-			'We Believe',
-			'Likely',
-			'About Even',
-			'Little Chance',
-			'Chances Are Slight',
-			'Almost No Chance'
-		];
+		const categories = Object.keys(data[0]);
 		const n = categories.length;
 
 		// Compute the mean of each group
