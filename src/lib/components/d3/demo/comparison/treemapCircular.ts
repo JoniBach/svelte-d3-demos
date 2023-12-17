@@ -16,7 +16,7 @@ export const demoTreemapCircular = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	//Read the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Filter a bit the data -> more than 1 million inhabitants
 		data = data.filter(function (d) {
 			return d.value > 10000000;

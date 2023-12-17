@@ -180,25 +180,24 @@ export const data = [
     {
         category: "comparison",
         graphs: [
+
             {
                 key: "treemap",
+                title: 'Academia',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_hierarchy_1level.csv",
-            },
-            {
-                key: "treemap-json",
-                value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram_full.json",
+                    "data/comparison/treemap.json",
             },
             {
                 key: "treemap-circular",
+                title: 'Tech revinue',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv",
+                    "data/comparison/treemap-circular.json",
+                // "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/11_SevCatOneNumNestedOneObsPerGroup.csv",
             },
             {
                 key: "dendrogram",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_dendrogram.json",
+                    "data/comparison/dendrogram.json",
             },
             {
                 key: "doughnut",
@@ -215,22 +214,25 @@ export const data = [
         graphs: [
             {
                 key: "arc",
+                title: 'Engineering team flow',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_network.json",
+                    "data/flow/arc.json",
             },
             {
                 key: "network",
+                title: 'Reasearch team network',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_network.json",
+                    "data/flow/network.json",
             },
             {
                 key: "chord",
+                title: 'courntry export connections',
                 value: [
-                    [11, 58, 89, 28],
-                    [51, 18, 20, 61],
-                    [80, 145, 80, 85],
-                    [103, 99, 40, 71],
-                ],
+                    [0, 35, 50, 25],  // Exports from Country A to B, C, D
+                    [40, 0, 30, 20],  // Exports from Country B to A, C, D
+                    [45, 25, 0, 30],  // Exports from Country C to A, B, D
+                    [20, 40, 35, 0]   // Exports from Country D to A, B, C
+                ]
             },
         ],
     },

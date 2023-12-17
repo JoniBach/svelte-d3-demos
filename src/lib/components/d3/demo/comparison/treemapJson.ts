@@ -8,7 +8,7 @@ export const demoTreemapJson = (newData: string, config: object): void => {
 
 	// append the svg object to the body of the page
 	const svg = d3
-		.select('#treemap-json')
+		.select('#treemap')
 		.append('svg')
 		.attr('width', width + margin.left + margin.right)
 		.attr('height', height + margin.top + margin.bottom)
@@ -51,7 +51,7 @@ export const demoTreemapJson = (newData: string, config: object): void => {
 			.data(root.leaves())
 			.join('text')
 			.attr('x', function (d) {
-				return d.x0 + 5;
+				return d.x0;
 			}) // +10 to adjust position (more right)
 			.attr('y', function (d) {
 				return d.y0 + 20;

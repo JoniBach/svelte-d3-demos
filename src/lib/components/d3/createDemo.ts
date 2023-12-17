@@ -29,7 +29,6 @@ import { demoTreemapCircular } from './demo/comparison/treemapCircular';
 import { demoDendrogram } from './demo/comparison/dendrogram';
 import { demoDoughnut } from './demo/comparison/doughnut';
 import { demoPie } from './demo/comparison/pie';
-import { demoTreemap } from './demo/comparison/treemap';
 import { demoTreemapJson } from './demo/comparison/treemapJson';
 import { demoArc } from './demo/flow/arc';
 import { demoChord } from './demo/flow/chord';
@@ -125,10 +124,8 @@ export const createDemo = (variant: string, data: string, config: object) => {
 
 		// comparison
 		case 'treemap':
-			demoTreemap(data, config);
-			break;
-		case 'treemap-json':
 			demoTreemapJson(data, config);
+			break;
 			break;
 		case 'treemap-circular':
 			demoTreemapCircular(data, config);
