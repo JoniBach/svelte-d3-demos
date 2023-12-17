@@ -17,7 +17,7 @@ export const demoBarCircularLabelsDouble = (newData: string, config: object): vo
 		.append('g')
 		.attr('transform', `translate(${width / 2},${height / 2 + 100})`); // Add 100 on Y translation, cause upper bars are longer
 
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// X scale: common for 2 data series
 		const x = d3
 			.scaleBand()
@@ -29,13 +29,13 @@ export const demoBarCircularLabelsDouble = (newData: string, config: object): vo
 		const y = d3
 			.scaleRadial()
 			.range([innerRadius, outerRadius]) // Domain will be define later.
-			.domain([0, 13000]); // Domain of Y is from 0 to the max seen in the data
+			.domain([0, 8000]); // Domain of Y is from 0 to the max seen in the data
 
 		// Second barplot Scales
 		const ybis = d3
 			.scaleRadial()
 			.range([innerRadius, 5]) // Domain will be defined later.
-			.domain([0, 13000]);
+			.domain([0, 8000]);
 
 		// Add the bars
 		svg
@@ -50,7 +50,7 @@ export const demoBarCircularLabelsDouble = (newData: string, config: object): vo
 				d3
 					.arc() // imagine your doing a part of a donut plot
 					.innerRadius(innerRadius)
-					.outerRadius((d) => y(d['Value']))
+					.outerRadius((d) => y(d['Energy_Consumption']))
 					.startAngle((d) => x(d.Country))
 					.endAngle((d) => x(d.Country) + x.bandwidth())
 					.padAngle(0.01)
@@ -74,7 +74,7 @@ export const demoBarCircularLabelsDouble = (newData: string, config: object): vo
 					(((x(d.Country) + x.bandwidth() / 2) * 180) / Math.PI - 90) +
 					')' +
 					'translate(' +
-					(y(d['Value']) + 10) +
+					(y(d['Energy_Consumption']) + 10) +
 					',0)'
 				);
 			})
@@ -100,7 +100,7 @@ export const demoBarCircularLabelsDouble = (newData: string, config: object): vo
 				d3
 					.arc() // imagine your doing a part of a donut plot
 					.innerRadius((d) => ybis(0))
-					.outerRadius((d) => ybis(d['Value']))
+					.outerRadius((d) => ybis(d['Green_Energy_Production']))
 					.startAngle((d) => x(d.Country))
 					.endAngle((d) => x(d.Country) + x.bandwidth())
 					.padAngle(0.01)

@@ -150,24 +150,30 @@ export const data = [
             },
             {
                 key: "lolipop-cleveland",
+                title: 'Athletes performance',
                 value:
                     "data/ranking/lolipop-cleveland.json",
-                // "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/data_cleveland.csv",
             },
             {
                 key: "bar-circular",
+                title: 'Energy consumption',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum.csv",
+                    "data/ranking/bar-circular.json",
+
             },
             {
                 key: "bar-circular-labels",
+                title: 'Energy consumption',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum.csv",
+                    "data/ranking/bar-circular.json",
+
             },
             {
                 key: "bar-circular-labels-double",
+                title: 'Energy consumption vs green energy production',
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/7_OneCatOneNum.csv",
+                    "data/ranking/bar-circular-double.json",
+
             },
         ],
     },

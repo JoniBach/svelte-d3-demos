@@ -1,0 +1,27 @@
+[
+    {
+        "Country": "USA",
+        "Energy_Consumption": "4000",
+        "Green_Energy_Production": "707.73"
+    },
+    {
+        "Country": "China",
+        "Energy_Consumption": "6200",
+        "Green_Energy_Production": "1896.6"
+    },
+    {
+        "Country": "India",
+        "Energy_Consumption": "2900",
+        "Green_Energy_Production": "371.14"
+    },
+    {
+        "Country": "Russia",
+        "Energy_Consumption": "1100",
+        "Green_Energy_Production": "228.72"
+    },
+    {
+        "Country": "Japan",
+        "Energy_Consumption": "850",
+        "Green_Energy_Production": "172.79"
+    }
+]

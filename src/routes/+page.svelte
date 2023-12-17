@@ -53,7 +53,7 @@
 		}
 
 		// URL of the CSV file
-		const url = data[2].graphs[3];
+		const url = data[2].graphs[8];
 
 		csvToJson(url.value)
 			.then((jsonData) => {

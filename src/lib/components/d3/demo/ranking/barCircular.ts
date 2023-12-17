@@ -17,7 +17,7 @@ export const demoBarCircular = (newData: string, config: object): void => {
 		.append('g')
 		.attr('transform', `translate(${width / 2},${height / 2 + 100})`); // Add 100 on Y translation, cause upper bars are longer
 
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// X scale
 		const x = d3
 			.scaleBand()
@@ -43,7 +43,7 @@ export const demoBarCircular = (newData: string, config: object): void => {
 				d3
 					.arc() // imagine your doing a part of a donut plot
 					.innerRadius(innerRadius)
-					.outerRadius((d) => y(d['Value']))
+					.outerRadius((d) => y(d['Energy_Consumption']))
 					.startAngle((d) => x(d.Country))
 					.endAngle((d) => x(d.Country) + x.bandwidth())
 					.padAngle(0.01)
