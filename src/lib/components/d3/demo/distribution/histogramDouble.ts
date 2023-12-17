@@ -1,7 +1,7 @@
 import * as d3 from 'd3';
 
 export const demoHistogramDouble = (newData: string, config: object): void => {
-	console.log()
+	console.log();
 	// set the dimensions and margins of the graph
 	const margin = config.margin,
 		width = config.size.width - margin.left - margin.right,

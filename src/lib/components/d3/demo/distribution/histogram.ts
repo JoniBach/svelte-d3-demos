@@ -17,7 +17,6 @@ export const demoHistogram = (newData: string, config: object): void => {
 
 	// get the data
 	d3.json(newData).then(function (data) {
-
 		// X axis: scale and draw:
 		const x = d3
 			.scaleLinear()

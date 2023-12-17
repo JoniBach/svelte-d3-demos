@@ -17,13 +17,15 @@ export const demoScatterConnected = (newData: string, config: object): void => {
 
 	//Read the data
 	d3.json(
-		newData,
+		newData
 		// (d) => (d.forEach((d) => (d.date = d3.timeParse('%Y-%m-%d')(d.date))))
-
 	).then(
 		// Now I can use this dataset:
 		function (data) {
-			const newData = data.map((d) => ({ date: d3.timeParse('%Y-%m-%d')(d.date), average_temperature: d.average_temperature }))
+			const newData = data.map((d) => ({
+				date: d3.timeParse('%Y-%m-%d')(d.date),
+				average_temperature: d.average_temperature
+			}));
 
 			// Add X axis --> it is a date format
 			const x = d3

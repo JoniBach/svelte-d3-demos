@@ -16,9 +16,7 @@ export const demoBar = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left},${margin.top})`);
 
 	// Parse the Data
-	d3.json(
-		newData
-	).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// X axis
 		const x = d3
 			.scaleBand()

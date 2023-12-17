@@ -26,9 +26,9 @@ export const demoTreemap = (newData: string, config: object): void => {
 			.parentId(function (d) {
 				return d.parent;
 			})(
-				// Name of the parent (column name is parent in csv)
-				data
-			);
+			// Name of the parent (column name is parent in csv)
+			data
+		);
 		root.sum(function (d) {
 			return +d.value;
 		}); // Compute the numeric value for each entity

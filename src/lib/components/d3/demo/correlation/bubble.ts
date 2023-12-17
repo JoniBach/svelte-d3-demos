@@ -17,7 +17,6 @@ export const demoBubble = (newData: string, config: object): void => {
 
 	//Read the data
 	d3.json(newData).then(function (data) {
-
 		// Add X axis
 		const x = d3.scaleLinear().domain([0, 500]).range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));

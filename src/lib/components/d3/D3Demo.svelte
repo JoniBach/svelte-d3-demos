@@ -18,7 +18,6 @@
 		fn(data, config);
 		fnContent = fn.toString();
 	});
-
 </script>
 
 <div id="{variant}-title" class="title">
@@ -39,8 +38,7 @@
 
 	<div class="graph" id={variant} />
 	<div class="example-code">
-
-<CodeViewer code={fnContent} />
+		<CodeViewer code={fnContent} />
 	</div>
 	<div class="content"></div>
 </div>

@@ -17,7 +17,7 @@ export const demoScatterConnectedSmoothe = (newData: string, config: object): vo
 
 	//Read the data
 	d3.json(
-		newData,
+		newData
 
 		// When reading the csv, I must format variables:
 		// (d) => {
@@ -26,7 +26,10 @@ export const demoScatterConnectedSmoothe = (newData: string, config: object): vo
 	).then(
 		// Now I can use this dataset:
 		function (data) {
-			const newData = data.map((d) => ({ date: d3.timeParse('%Y-%m-%d')(d.date), value: d.average_temperature }))
+			const newData = data.map((d) => ({
+				date: d3.timeParse('%Y-%m-%d')(d.date),
+				value: d.average_temperature
+			}));
 			// Add X axis --> it is a date format
 			const x = d3
 				.scaleTime()
