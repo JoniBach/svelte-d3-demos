@@ -46,17 +46,17 @@ export const data = [
             {
                 key: "scatter",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/data_to_viz/master/Example_dataset/2_TwoNum.csv",
+                    "data/correlation/scatter.json",
             },
             {
                 key: "heatmap",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv",
+                    "data/correlation/heatmap.json",
             },
             {
                 key: "heatmap-advanced",
                 value:
-                    "https://raw.githubusercontent.com/holtzy/D3-graph-gallery/master/DATA/heatmap_data.csv",
+                    "data/correlation/heatmap.json",
             },
             {
                 key: "correlogram",

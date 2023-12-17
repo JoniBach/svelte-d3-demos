@@ -16,13 +16,13 @@ export const demoScatter = (newData: string, config: object): void => {
 		.attr('transform', `translate(${margin.left}, ${margin.top})`);
 
 	//Read the data
-	d3.csv(newData).then(function (data) {
+	d3.json(newData).then(function (data) {
 		// Add X axis
-		const x = d3.scaleLinear().domain([0, 4000]).range([0, width]);
+		const x = d3.scaleLinear().domain([0, 500]).range([0, width]);
 		svg.append('g').attr('transform', `translate(0, ${height})`).call(d3.axisBottom(x));
 
 		// Add Y axis
-		const y = d3.scaleLinear().domain([0, 500000]).range([height, 0]);
+		const y = d3.scaleLinear().domain([0, 300]).range([height, 0]);
 		svg.append('g').call(d3.axisLeft(y));
 
 		// Add dots
@@ -32,10 +32,10 @@ export const demoScatter = (newData: string, config: object): void => {
 			.data(data)
 			.join('circle')
 			.attr('cx', function (d) {
-				return x(d.GrLivArea);
+				return x(d.x);
 			})
 			.attr('cy', function (d) {
-				return y(d.SalePrice);
+				return y(d.y);
 			})
 			.attr('r', 1.5)
 			.style('fill', '#69b3a2');
