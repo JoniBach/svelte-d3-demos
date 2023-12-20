@@ -5,9 +5,9 @@ export const getKeys = (keys: string[], type: string) => {
     const yIndex = 1;
     const zIndex = 2;
 
-    const x = keys[xIndex];
-    const y = keys[yIndex];
-    const z = keys[zIndex];
+    const x = type !== 'n' && keys[xIndex];
+    const y = type !== 'n' && keys[yIndex];
+    const z = type !== 'n' && keys[zIndex];
 
     // Use the 'type' parameter to determine the behavior
     if (type === 'x') {
@@ -29,7 +29,14 @@ export const getKeys = (keys: string[], type: string) => {
 export const getValue = (data: any, key: string) => data[key]
 
 // get the a signle domain of the data based on a dynamic key
-export const getDomain = (data: any, key: string) => d3.extent(data, (d: any) => getValue(d, key))
+export const getDomain = (data: any[], key: string) => {
+    const sorted = data.sort((a, b) => Number(getValue(a, key)) - Number(getValue(b, key)))
+    const values = data.map((d: any) => Number(getValue(d, key)));
+    const min = Math.min(...values);
+    const max = Math.max(...values);
+    console.log({ min, max, key, data, sorted })
+    return [min, max];
+}
 
 // get all the domains of the data based on standard dynamic keys
 export const getDomains = (data: string[], keys: any[], type: string) => {
@@ -59,3 +66,51 @@ export const getDomains = (data: string[], keys: any[], type: string) => {
 }
 
 export const getUniqueIds = (data: any, id: string) => [...new Set(data.map((item: any) => item[id]))];
+export const createSVG = ({ id, width, height, margin }) => d3
+    .select(`#${id}`)
+    .append('svg')
+    .attr('width', width + margin.left + margin.right)
+    .attr('height', height + margin.top + margin.bottom)
+    .append('g')
+    .attr('transform', `translate(${margin.left},${margin.top})`);
+
+// Function to compute density
+export function kernelDensityEstimator(kernel, X) {
+    return function (V) {
+        return X.map(function (x) {
+            return [
+                x,
+                d3.mean(V, function (v) {
+                    return kernel(x - v);
+                })
+            ];
+        });
+    };
+}
+export function kernelEpanechnikov(k) {
+    return function (v) {
+        return Math.abs((v /= k)) <= 1 ? (0.75 * (1 - v * v)) / k : 0;
+    };
+}
+
+export const createPlot = ({ data, x, y, svg, color }) => svg
+    .append('path')
+    .attr('class', 'mypath')
+    .datum(data)
+    .attr('fill', color)
+    .attr('opacity', '.6')
+    .attr('stroke', '#000')
+    .attr('stroke-width', 1)
+    .attr('stroke-linejoin', 'round')
+    .attr(
+        'd',
+        d3
+            .line()
+            .curve(d3.curveBasis)
+            .x(function (d) {
+                return x(d[0]);
+            })
+            .y(function (d) {
+                return y(d[1]);
+            })
+    );

@@ -105,8 +105,15 @@ export const data = [
 					"type": "variable 1", // value x
 					"value": "-1.77631469016691" // value y
 				},
+				config: {
+					keys: ['value'],
+					id: 'type',
+					margin: { top: 20, right: 20, bottom: 20, left: 40 },
+					colors: ['#69b3a2', '#404080']
+				},
 				fn: demoDensityDoubleB2B
 			},
+
 			{
 				key: 'ridgeline',
 				title: 'Mental Health',
@@ -136,6 +143,30 @@ export const data = [
 				key: 'ridgeline-advanced',
 				title: 'Mental Health',
 				value: 'data/distribution/ridgeline.json',
+				config: {
+					keys: [
+						"Severe Depression",
+						"Major Depression",
+						"Moderate Depression",
+						"Mild Depression",
+						"Low Mood",
+						"Occasional Sadness",
+						"Rarely Sad",
+						"Generally Happy",
+						"Balanced Mood",
+						"Occasionally Optimistic",
+						"Mostly Optimistic",
+						"Frequently Joyful",
+						"Regularly Joyful",
+						"Highly Energetic",
+						"Extremely Positive",
+						"Consistently Positive",
+						"Unwavering Positivity",
+					],
+
+					margin: { top: 20, right: 20, bottom: 20, left: 40 },
+					colors: ['#69b3a2', '#404080']
+				},
 				note: {
 					"Severe Depression": 6.0, // value n
 					"Major Depression": 17.9, // value n

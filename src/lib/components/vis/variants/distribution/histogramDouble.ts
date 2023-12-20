@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { getDomains, getKeys, getUniqueIds, getValue } from '../../utils';
+import { createSVG, getDomains, getKeys, getUniqueIds, getValue } from '../../utils';
 
 const drawRectangle = ({ data, x, y, height, svg, index, color }) => svg
 	.selectAll(`rect${index}`)
@@ -20,7 +20,6 @@ const drawRectangle = ({ data, x, y, height, svg, index, color }) => svg
 
 
 export const demoHistogramDouble = (newData: string, config: object): void => {
-	console.log();
 	// set the dimensions and margins of the graph
 	const type = 'x',
 		keys = getKeys(config.keys, type),
@@ -31,13 +30,8 @@ export const demoHistogramDouble = (newData: string, config: object): void => {
 		colors = config.colors;
 
 	// append the svg object to the body of the page
-	const svg = d3
-		.select('#histogram-double')
-		.append('svg')
-		.attr('width', width + margin.left + margin.right)
-		.attr('height', height + margin.top + margin.bottom)
-		.append('g')
-		.attr('transform', `translate(${margin.left},${margin.top})`);
+	const svg = createSVG({ id: 'histogram-double', width, height, margin });
+
 
 	// get the data
 	d3.json(newData).then(function (data) {

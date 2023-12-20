@@ -1,6 +1,5 @@
 import * as d3 from 'd3';
-import { getDomain, getDomains, getKeys, getValue } from '../../utils';
-import { get } from 'svelte/store';
+import { createSVG, getDomains, getKeys, getValue } from '../../utils';
 
 export const demoHistogram = (newData: string, config: object): void => {
 	// config
@@ -11,13 +10,7 @@ export const demoHistogram = (newData: string, config: object): void => {
 		height = config.size.height - margin.top - margin.bottom;
 
 	// append the svg object to the body of the page
-	const svg = d3
-		.select('#histogram')
-		.append('svg')
-		.attr('width', width + margin.left + margin.right)
-		.attr('height', height + margin.top + margin.bottom)
-		.append('g')
-		.attr('transform', `translate(${margin.left},${margin.top})`);
+	const svg = createSVG({ id: 'histogram', width, height, margin });
 
 	// get the data
 	d3.json(newData).then(function (data) {

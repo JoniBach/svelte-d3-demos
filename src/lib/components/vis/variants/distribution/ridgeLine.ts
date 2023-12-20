@@ -1,19 +1,18 @@
 import * as d3 from 'd3';
+import { createSVG, getKeys, kernelDensityEstimator, kernelEpanechnikov } from '../../utils';
 
 export const demoRidgeLine = (newData: string, config: object): void => {
 	// set the dimensions and margins of the graph
-	const margin = config.margin,
+	const type = 'n',
+		keys = getKeys(config.keys, type),
+		margin = config.margin,
 		width = config.size.width - margin.left - margin.right,
-		height = config.size.height - margin.top - margin.bottom;
+		height = config.size.height - margin.top - margin.bottom,
+		id = config.id,
+		colors = config.colors;
 
 	// append the svg object to the body of the page
-	const svg = d3
-		.select('#ridgeline')
-		.append('svg')
-		.attr('width', width + margin.left + margin.right)
-		.attr('height', height + margin.top + margin.bottom)
-		.append('g')
-		.attr('transform', `translate(${margin.left}, ${margin.top})`);
+	const svg = createSVG({ id: 'ridgeline', width, height, margin });
 
 	//read data
 	d3.json(newData).then(function (data) {
@@ -73,22 +72,5 @@ export const demoRidgeLine = (newData: string, config: object): void => {
 			);
 	});
 
-	// This is what I need to compute kernel density estimation
-	function kernelDensityEstimator(kernel, X) {
-		return function (V) {
-			return X.map(function (x) {
-				return [
-					x,
-					d3.mean(V, function (v) {
-						return kernel(x - v);
-					})
-				];
-			});
-		};
-	}
-	function kernelEpanechnikov(k) {
-		return function (v) {
-			return Math.abs((v /= k)) <= 1 ? (0.75 * (1 - v * v)) / k : 0;
-		};
-	}
+
 };

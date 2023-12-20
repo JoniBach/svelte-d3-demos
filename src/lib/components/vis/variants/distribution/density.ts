@@ -1,5 +1,5 @@
 import * as d3 from 'd3';
-import { getDomains, getKeys, getValue } from '../../utils';
+import { createSVG, getDomains, getKeys, getValue, kernelDensityEstimator, kernelEpanechnikov } from '../../utils';
 
 const plot = ({ density, x, y, svg }) => svg
 	.append('path')
@@ -32,13 +32,7 @@ export const demoDensity = (newData: string, config: object): void => {
 		height = config.size.height - margin.top - margin.bottom;
 
 	// append the svg object to the body of the page
-	const svg = d3
-		.select('#density')
-		.append('svg')
-		.attr('width', width + margin.left + margin.right)
-		.attr('height', height + margin.top + margin.bottom)
-		.append('g')
-		.attr('transform', `translate(${margin.left},${margin.top})`);
+	const svg = createSVG({ id: 'density', width, height, margin });
 
 	// get the data
 	d3.json(newData).then(function (data) {
@@ -66,22 +60,5 @@ export const demoDensity = (newData: string, config: object): void => {
 		plot({ density, x, y, svg })
 	});
 
-	// Function to compute density
-	function kernelDensityEstimator(kernel, X) {
-		return function (V) {
-			return X.map(function (x) {
-				return [
-					x,
-					d3.mean(V, function (v) {
-						return kernel(x - v);
-					})
-				];
-			});
-		};
-	}
-	function kernelEpanechnikov(k) {
-		return function (v) {
-			return Math.abs((v /= k)) <= 1 ? (0.75 * (1 - v * v)) / k : 0;
-		};
-	}
+
 };
